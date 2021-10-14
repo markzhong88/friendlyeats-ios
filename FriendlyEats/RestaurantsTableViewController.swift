@@ -73,7 +73,30 @@ class RestaurantsTableViewController: UIViewController, UITableViewDataSource, U
     stopObserving()
 
     // Display data from Firestore, part one
+    listener = query.addSnapshotListener { [unowned self] (snapshot, error) in
+      guard let snapshot = snapshot else {
+        print("Error fetching snapshot results: \(error!)")
+        return
+      }
+      let models = snapshot.documents.map { (document) -> Restaurant in
+        if let model = Restaurant(dictionary: document.data()) {
+          return model
+        } else {
+          // Don't use fatalError here in a real app.
+          fatalError("Unable to initialize type \(Restaurant.self) with dictionary \(document.data())")
+        }
+      }
+      self.restaurants = models
+      self.documents = snapshot.documents
 
+      if self.documents.count > 0 {
+        self.tableView.backgroundView = nil
+      } else {
+        self.tableView.backgroundView = self.backgroundView
+      }
+
+      self.tableView.reloadData()
+    }
 
   }
 
@@ -156,7 +179,20 @@ class RestaurantsTableViewController: UIViewController, UITableViewDataSource, U
       let price = Int(arc4random_uniform(3)) + 1
 
       // Write Data to Firestore
+        let collection = Firestore.firestore().collection("restaurants")
 
+        // ====== ADD THIS ======
+        let restaurant = Restaurant(
+          name: name,
+          category: category,
+          city: city,
+          price: price,
+          ratingCount: 0,
+          averageRating: 0
+        )
+
+        collection.addDocument(data: restaurant.dictionary)
+        
     }
   }
 
@@ -221,7 +257,22 @@ extension RestaurantsTableViewController: FiltersViewControllerDelegate {
     }
 
     // Sorting and Filtering Data
+    if let category = category, !category.isEmpty {
+      filtered = filtered.whereField("category", isEqualTo: category)
+    }
 
+    if let city = city, !city.isEmpty {
+      filtered = filtered.whereField("city", isEqualTo: city)
+    }
+
+    if let price = price {
+      filtered = filtered.whereField("price", isEqualTo: price)
+    }
+
+    if let sortBy = sortBy, !sortBy.isEmpty {
+      filtered = filtered.order(by: sortBy)
+    }
+    
     return filtered
   }
 
@@ -275,6 +326,12 @@ class RestaurantTableViewCell: UITableViewCell {
 
   func populate(restaurant: Restaurant) {
 
+    nameLabel.text = restaurant.name
+    cityLabel.text = restaurant.city
+    categoryLabel.text = restaurant.category
+    starsView.rating = Int(restaurant.averageRating.rounded())
+    priceLabel.text = priceString(from: restaurant.price)
+    
     // Displaying data, part two
 
     let image = imageURL(from: restaurant.name)
