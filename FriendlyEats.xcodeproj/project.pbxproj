@@ -12,6 +12,7 @@
 		3FCF83DC27176F860046EC8E /* DBFlyingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCF83DB27176F860046EC8E /* DBFlyingSpot.swift */; };
 		3FCF83DE271871270046EC8E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCF83DD271871270046EC8E /* MapViewController.swift */; };
 		3FCF83E0271874680046EC8E /* UserSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCF83DF271874680046EC8E /* UserSignInViewController.swift */; };
+		3FCF83ED271E23B10046EC8E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCF83EC271E23B10046EC8E /* ProfileViewController.swift */; };
 		8D004D2D1EE879B5004DEF35 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D004D2C1EE879B5004DEF35 /* FiltersViewController.swift */; };
 		8D5DF7021F7EF3BA00B0D24F /* NewReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DF7011F7EF3BA00B0D24F /* NewReviewViewController.swift */; };
 		8D9BBC311EE2200900194E9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9BBC301EE2200900194E9A /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 		3FCF83DB27176F860046EC8E /* DBFlyingSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBFlyingSpot.swift; sourceTree = "<group>"; };
 		3FCF83DD271871270046EC8E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3FCF83DF271874680046EC8E /* UserSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignInViewController.swift; sourceTree = "<group>"; };
+		3FCF83EC271E23B10046EC8E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5DE127ABC69B3A90B924E44E /* Pods-FriendlyEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendlyEats.debug.xcconfig"; path = "Target Support Files/Pods-FriendlyEats/Pods-FriendlyEats.debug.xcconfig"; sourceTree = "<group>"; };
 		65F9DFBD4CB7E0CE8AD26A37 /* Pods-FriendlyEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendlyEats.release.xcconfig"; path = "Target Support Files/Pods-FriendlyEats/Pods-FriendlyEats.release.xcconfig"; sourceTree = "<group>"; };
 		84C22D9F7BC16C3144ADA422 /* Pods_FriendlyEatsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FriendlyEatsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 			children = (
 				8D9BBC301EE2200900194E9A /* AppDelegate.swift */,
 				3FCF83DF271874680046EC8E /* UserSignInViewController.swift */,
+				3FCF83EC271E23B10046EC8E /* ProfileViewController.swift */,
 				3FCF83DD271871270046EC8E /* MapViewController.swift */,
 				8D9BBC321EE2200900194E9A /* RestaurantsTableViewController.swift */,
 				8DF77E191EEB45E500CB2330 /* RestaurantDetailViewController.swift */,
@@ -392,6 +395,7 @@
 				8DF1E3151EE72C4600192CDE /* LocalCollection.swift in Sources */,
 				3FCF83DE271871270046EC8E /* MapViewController.swift in Sources */,
 				3FCF83DC27176F860046EC8E /* DBFlyingSpot.swift in Sources */,
+				3FCF83ED271E23B10046EC8E /* ProfileViewController.swift in Sources */,
 				8D5DF7021F7EF3BA00B0D24F /* NewReviewViewController.swift in Sources */,
 				8DF1E3131EE5CFF900192CDE /* Restaurant.swift in Sources */,
 				8DF77E1A1EEB45E500CB2330 /* RestaurantDetailViewController.swift in Sources */,

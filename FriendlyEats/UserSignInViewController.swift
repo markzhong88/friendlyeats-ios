@@ -19,6 +19,7 @@ class UserSignInViewController: UIViewController {
     
     var window: UIWindow?
 
+    @IBOutlet weak var GoogleSignBtn: GIDSignInButton!
     @IBOutlet weak var startBtn: UIButton!
     
     override func viewDidLoad() {

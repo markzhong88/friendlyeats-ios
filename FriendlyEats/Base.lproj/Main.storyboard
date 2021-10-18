@@ -41,6 +41,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0ox-xJ-C9S"/>
                     <connections>
+                        <outlet property="GoogleSignBtn" destination="MUs-1t-WGl" id="qMv-0I-Z82"/>
                         <outlet property="startBtn" destination="TUI-FS-qdV" id="rlq-hA-skM"/>
                     </connections>
                 </viewController>
