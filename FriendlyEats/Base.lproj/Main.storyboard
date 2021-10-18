@@ -28,6 +28,14 @@
                                     <action selector="clickStartMap:" destination="BD2-7V-GVv" eventType="touchUpInside" id="mV8-Oh-I0v"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MUs-1t-WGl" customClass="GIDSignInButton">
+                                <rect key="frame" x="68" y="402" width="239" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <action selector="clickGoogleSignIn:" destination="BD2-7V-GVv" eventType="valueChanged" id="CiS-43-d63"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -38,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqC-2a-ztr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="956" y="-1353"/>
+            <point key="canvasLocation" x="956" y="-1353.3733133433284"/>
         </scene>
         <!--Friendly Eats-->
         <scene sceneID="tne-QT-ifu">

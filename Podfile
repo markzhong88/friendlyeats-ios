@@ -8,9 +8,11 @@ target 'FriendlyEats' do
   pod 'FirebaseUI/Auth', '~> 8.0'
   pod 'FirebaseUI/Email', '~> 8.0'
   pod 'FirebaseUI/Google', '~> 8.0'
+  pod 'FirebaseUI/OAuth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Core'
-
+  pod 'GoogleSignIn'
+  
   target 'FriendlyEatsTests' do
     inherit! :search_paths
     # Pods for testing
