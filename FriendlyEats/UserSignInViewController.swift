@@ -6,7 +6,6 @@
 //  Copyright © 2021 Firebase. All rights reserved.
 //
 
-
 import UIKit
 import FirebaseUI
 import FirebaseFirestore
@@ -24,21 +23,16 @@ class UserSignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Flying Spot"
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.title = "User Sign In"
         self.view.backgroundColor = UIColor.white
+        GoogleSignBtn.style = .wide
+        GoogleSignBtn.colorScheme = .light
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
       super.viewDidAppear(animated)
         GIDSignIn.sharedInstance().presentingViewController = self
-        
-        if GIDSignIn.sharedInstance().currentUser != nil {
-            //signed in
-        } else {
-            
-            //GIDSignIn.sharedInstance().signIn()
-        }
         
     }
 
@@ -66,8 +60,11 @@ class UserSignInViewController: UIViewController {
     }
     
     @IBAction func clickStartMap(_ sender: Any) {
-        let vc = MapViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = MapViewController()
+//        self.navigationController?.pushViewController(vc, animated: true)
+//
+//
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func clickGoogleSignIn(_ sender: Any) {

@@ -18,6 +18,7 @@ import UIKit
 import Firebase
 import FirebaseCore
 import GoogleSignIn
+import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -40,6 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             return
         }
         
+        print("user signed up email: \(user.profile.email ?? "no email")")
+        print("user given name: \(user.profile.givenName ?? "No given name")")
+        print("user family name: \(user.profile.familyName ?? "No family name")")
+        print("user id: \(user.userID ?? "No family name")")
+
         guard let auth = user.authentication else { return }
         let credentials = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
         
@@ -50,13 +56,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 print("Login Successful.")
                 //This is where you should add the functionality of successful login
                 //i.e. dismissing this view or push the home view controller etc
-                print("user signed up with email: \(user.profile.email ?? "no email")")
-                print("user given name: \(user.profile.givenName ?? "No given name")")
-                print("user family name: \(user.profile.familyName ?? "No family name")")
+                self.saveUserToDB(uid: authResult?.user.uid, firstname: user.profile.givenName, lastname: user.profile.familyName, email: user.profile.email)
+                
             }
         }
     }
-        
+    
+    func saveUserToDB(uid: String?, firstname:String?, lastname:String?, email:String) {
+        let db = Firestore.firestore()
+        guard let uid = uid else { return }
+        let _: Void = db.collection("users")
+            .whereField("uid", isEqualTo: uid)
+            .getDocuments { (snapshot, error) in
+                if let snapshot = snapshot, snapshot.documents.count > 0 {
+                    print(snapshot.documents)
+                } else {
+                    print("not an existed user, so save to DB")
+                    db.collection("users").addDocument(data: ["firstname":firstname ?? "", "lastname":lastname ?? "", "uid": uid, "email":email ]) { (error) in
+
+                        if error != nil {
+                            print("auth sign error: ", error ?? "error")
+                        }
+                    }
+                }
+            }
+    }
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return GIDSignIn.sharedInstance().handle(url)
     }
